@@ -22,6 +22,12 @@
 * favor composition over inheritence. Composition is when you put two classes together to get the overall behavior you want. Instead of _inheriting_ behaviour, your objects are _composed_ with the right behaviour classes. This provides you with flexibility at runtime.
 * strive for loosely couple designs between objects that interact
 * open-closed principle: classes should be open for extension but open for modification. We want to incorporate new behaviour without modifying old code.
+* dependency inversion principle: import abstractions, don't import concrete classes. High level components shouldn't depend on low level components. Both should depend on abstractions.
+
+### guidelines for not violating the DIP
+1. no variable should hold a reference to a concrete class (i.e. use a factory)
+2. no class should derive from a concrete class (inheritence is a dependency)
+3. no method should override an implemented method of it's base class (that would imply it's not a proper abstraction)a
 
 ## Patterns
 1. Strategy Pattern: defines a family of algorithms, encapsulates each one, and makes them interchangeable.
@@ -55,3 +61,6 @@
 3. the abstract creator can have behavior code which isn't overidden by the concretes, but which is agnostic to the concrete type.
 4. The abstract product class is inherited by the concrete product classes.
 5. the class types are parallel: the abstract creator references the abstract product, the concrete creators the concrete products
+
+#### Abstract factory pattern
+1. reducing dependecies to concrete classes is a good thing. It's called the Dependency Inversion Principle
