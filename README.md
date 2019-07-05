@@ -27,6 +27,8 @@
 1. Strategy Pattern: defines a family of algorithms, encapsulates each one, and makes them interchangeable.
 2. Observer Pattern: defines a one to many dependency between objects so that when one object (the _subject_) changes state, the dependents (_observers_) are notified and updated
 3. Dectorator pattern: attaches additional responsibilities to an object fynamically. a flecible alternative to subclassing for extending functionality
+3. Factory Method Pattern: defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses
+4. Abstract Factory Pattern: provides an interface for creating families of realted or dependent objects without specifying their concrete classes
 
 ### observer pattern
 1. subject interface, implemented by concrete subjects. has methods for registeringObserver, removing observer, notifying observer
@@ -41,3 +43,15 @@
 3. the decorator will add it's own behaviour before or after delegating to the object it decorates
 4. the implementation in: you have a compontent class, a contretecomponent class which extends it
 5. note you're using inheritence, and inheritence can be bad, but here we're using it achieve type matching and polymorphism, we're not trying to inherit behaviour. you could totally use an interface though.
+
+### factory pattern 
+1. when you instantiate, you are by definition coding to a concrete class. When your requirements change you will need to open your code (i.e. violate the open-closed principle)
+2. a simple factory is just an encapsulation of object creation. More an idiom than a patter
+3. all factory patterns encapsulate object creation
+
+#### Factory Method Pattern
+1. encapsulates object creation by letting subclasses decide what objects to create
+2. There is an abstract creator class, which has an abstract factory method which subclasses implement. The subclasses are called concrete creators.
+3. the abstract creator can have behavior code which isn't overidden by the concretes, but which is agnostic to the concrete type.
+4. The abstract product class is inherited by the concrete product classes.
+5. the class types are parallel: the abstract creator references the abstract product, the concrete creators the concrete products
