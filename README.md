@@ -44,7 +44,7 @@
 5. the goal is that the objects and subjects are loosely coupled.
 
 ### decorator pattern
-1. take a darkroast coffee object, decorate it with a cream object, then a sugar object, then call the cost() method and rely on delegation to tell you what the cost of a darkroast coffee with cream and sugar costs.
+. take a darkroast coffee object, decorate it with a cream object, then a sugar object, then call the cost() method and rely on delegation to tell you what the cost of a darkroast coffee with cream and sugar costs.
 2. decorating, or wrapping, relies on polymorphism: the wrapper and wrapped objects are both subclasses of the same superclass, so you can treat them similarly
 3. the decorator will add it's own behaviour before or after delegating to the object it decorates
 4. the implementation in: you have a compontent class, a contretecomponent class which extends it
@@ -57,10 +57,27 @@
 
 #### Factory Method Pattern
 1. encapsulates object creation by letting subclasses decide what objects to create
-2. There is an abstract creator class, which has an abstract factory method which subclasses implement. The subclasses are called concrete creators.
+2. There is an _abstract creator_ class, which has an _abstract factory method_ which subclasses implement. The subclasses are called _concrete creators_.
 3. the abstract creator can have behavior code which isn't overidden by the concretes, but which is agnostic to the concrete type.
-4. The abstract product class is inherited by the concrete product classes.
+4. The _abstract product_ class is inherited by the _concrete product classes_.
 5. the class types are parallel: the abstract creator references the abstract product, the concrete creators the concrete products
 
 #### Abstract factory pattern
 1. reducing dependecies to concrete classes is a good thing. It's called the Dependency Inversion Principle
+2. an _abstract factory_ gives an interface for creating a family of products using _concrete factories._
+3. as before you have _abstract products_ and _concrete products_, with your concrete factories instantiating your concrete products
+4. Your concrete families produce the same products (since they implement the same abstract) but with different behaviour.
+5. Our _client_ code gets composed with different factories depending on the desired behavior, but the client code itself is unchanged
+6. usually there is still an abstract factory method, or several of them, in the abstract factory class.
+
+#### differences between the two types
+1. both AF and FM create objects, but FM does it through inheritence and AF does it through composition.
+2. with FM, you extend a class which has an abstract factory method and implement the method, which creates the objects
+3. with AF you have an abstract factory with subclasses which define how products are produced. then you instatiate one of the subclasses and pass it to code which is written against the abstract type. 
+4. An AF can group together a set of related products, whereas FM is only good for a single product. But if you want to add another product to an AF, you need to change your interface, and probably all your subclasses
+
+### What is the point of a Singleton
+1. there are lots of things you need one and only one of, and if you have more than one it could cause problems. Registry settings, connections etc.
+2. why not just have a global variable? it will generally be created when the app first starts, which can be undesirable.
+3. One implementation: allow no direct instantiation, you get the only allowable instance with a `get_instance()` method (you need to be able to enforce a private constructor)
+4. 
