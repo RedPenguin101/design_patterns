@@ -23,6 +23,11 @@
 * strive for loosely couple designs between objects that interact
 * open-closed principle: classes should be open for extension but open for modification. We want to incorporate new behaviour without modifying old code.
 * dependency inversion principle: import abstractions, don't import concrete classes. High level components shouldn't depend on low level components. Both should depend on abstractions.
+* Principle of least knowledge (aka law of Demeter): talk only to your immediate friends. A class should only interact with a few other classes. No calling methods of objects you get by calling other ojects. You should only invoke methods that belong to
+	* the object itself
+	* objects passed in as a parameter to the method
+	* any object the method creates
+	* any components of the object
 
 ### guidelines for not violating the DIP
 1. no variable should hold a reference to a concrete class (i.e. use a factory)
@@ -35,6 +40,10 @@
 3. Dectorator pattern: attaches additional responsibilities to an object fynamically. a flecible alternative to subclassing for extending functionality
 3. Factory Method Pattern: defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses
 4. Abstract Factory Pattern: provides an interface for creating families of realted or dependent objects without specifying their concrete classes
+5. Singleton
+6. Command Pattern
+7. Adapter Pattern: converts the interface of a class into another interface the client accepts. Adapters let classes wok together that couldn't otherwise because of icompatible interfaces.
+8. Facade Pattern: provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher level interface that makes the subsystems easier to use.
 
 ### observer pattern
 1. subject interface, implemented by concrete subjects. has methods for registeringObserver, removing observer, notifying observer
@@ -81,3 +90,11 @@
 2. why not just have a global variable? it will generally be created when the app first starts, which can be undesirable.
 3. One implementation: allow no direct instantiation, you get the only allowable instance with a `get_instance()` method (you need to be able to enforce a private constructor)
 4. 
+
+## Object Adapter pattern
+1. a sqaure peg in a round hole - wrapping an interface in another interface which tranlastes between the client code and the original interface
+2. have the adapter implement the target interface, implent all abstract methods, have a constructor which gets passed an instance of the adaptee, then have your client code initialise the adapter class, which can then be used as a instance of the target
+3. if necessary you can have a 2 way adapter, which implements both interfaces
+4. client creates a new instance of the adapter (`TurkeyAdapter`), but types it as a target(`Duck`), with the adapter being composed with the adaptee (`Turkey`)
+5. Class adapter: slightly different, the adapter subclasses the target and adapter.
+6. facade: makes an interface simpler, and in addition decouples the client from the complex and potentially changing lower level components
