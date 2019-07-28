@@ -44,6 +44,7 @@
 6. Command Pattern
 7. Adapter Pattern: converts the interface of a class into another interface the client accepts. Adapters let classes wok together that couldn't otherwise because of icompatible interfaces.
 8. Facade Pattern: provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher level interface that makes the subsystems easier to use.
+9. Template Method Pattern: defines the skeleton of an algorithm in aethod, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without chaging the algorithms structure
 
 ### observer pattern
 1. subject interface, implemented by concrete subjects. has methods for registeringObserver, removing observer, notifying observer
@@ -53,7 +54,7 @@
 5. the goal is that the objects and subjects are loosely coupled.
 
 ### decorator pattern
-. take a darkroast coffee object, decorate it with a cream object, then a sugar object, then call the cost() method and rely on delegation to tell you what the cost of a darkroast coffee with cream and sugar costs.
+1. take a darkroast coffee object, decorate it with a cream object, then a sugar object, then call the cost() method and rely on delegation to tell you what the cost of a darkroast coffee with cream and sugar costs.
 2. decorating, or wrapping, relies on polymorphism: the wrapper and wrapped objects are both subclasses of the same superclass, so you can treat them similarly
 3. the decorator will add it's own behaviour before or after delegating to the object it decorates
 4. the implementation in: you have a compontent class, a contretecomponent class which extends it
@@ -91,10 +92,12 @@
 3. One implementation: allow no direct instantiation, you get the only allowable instance with a `get_instance()` method (you need to be able to enforce a private constructor)
 4. 
 
-## Object Adapter pattern
+## Adapter and facade pattern
 1. a sqaure peg in a round hole - wrapping an interface in another interface which tranlastes between the client code and the original interface
 2. have the adapter implement the target interface, implent all abstract methods, have a constructor which gets passed an instance of the adaptee, then have your client code initialise the adapter class, which can then be used as a instance of the target
 3. if necessary you can have a 2 way adapter, which implements both interfaces
 4. client creates a new instance of the adapter (`TurkeyAdapter`), but types it as a target(`Duck`), with the adapter being composed with the adaptee (`Turkey`)
 5. Class adapter: slightly different, the adapter subclasses the target and adapter.
 6. facade: makes an interface simpler, and in addition decouples the client from the complex and potentially changing lower level components
+
+
