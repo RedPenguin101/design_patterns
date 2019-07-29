@@ -46,6 +46,12 @@
 8. Facade Pattern: provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher level interface that makes the subsystems easier to use.
 9. Template Method Pattern: defines the skeleton of an algorithm in aethod, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without chaging the algorithms structure
 
+## When might you want to use patterns
+* when you are tempted to use subclasses: consider the strategy pattern
+* when you have lots of conditionals in your context: consider the state pattern
+* when you have objects which need to be updated with information from another object: consider the observer pattern
+
+
 ### observer pattern
 1. subject interface, implemented by concrete subjects. has methods for registeringObserver, removing observer, notifying observer
 2. observer interface, just one method: update()
